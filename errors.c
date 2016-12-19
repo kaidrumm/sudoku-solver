@@ -23,7 +23,7 @@ int		check_args(char **argv)
 	{
 		j = 0;
 		valid = 0;
-		while (argv[j] != '\0')
+		while (argv[i][j] != '\0')
 		{
 			if (argv[i][j] == '.' || (argv[i][j] <= '9' && argv[i][j] > '0'))
 				valid++;
@@ -38,7 +38,7 @@ int		check_args(char **argv)
 	return (1);
 }
 
-void	error(void)
+void	error(char *msg)
 {
-	ft_putstr("Error\n");
+	ft_putstr(msg);
 }
