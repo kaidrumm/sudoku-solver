@@ -38,16 +38,22 @@ void			printboard(int **board)
 	int		j;
 
 	i = -1;
+	ft_putstr("-------------------------\n");
 	while (++i < 9)
 	{
 		j = -1;
+		ft_putstr("| ");
 		while (++j < 9)
 		{
 			ft_putchar(ABS(board[i][j]) + '0');
-			if (j != 8)
+			if (j % 3 == 2)
+				ft_putstr(" | ");
+			else if (j != 8)
 				ft_putchar(' ');
 		}
 		ft_putchar('\n');
+		if (i % 3 == 2)
+			ft_putstr("-------------------------\n");
 	}
 }
 
