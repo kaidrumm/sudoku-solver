@@ -8,6 +8,6 @@ Input should be in the form of nine strings of digits and period, such as
 * make
 * ./sudoku [nine strings of sudoku board input]
 
-My algorithm will fill in the dots and print out a completed sudoku grid. (currently no special formatting for visual effects.)
+My algorithm will fill in the dots and print out a completed sudoku grid.
 
 Written with help from Julia Iliuk (https://github.com/Julsy) and Lillia Gutnikova
