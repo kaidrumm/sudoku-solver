@@ -16,9 +16,7 @@
 struct s_point		*find_next(struct s_point *p)
 {
 	if (p->column + 1 < 9)
-	{
 		p->column++;
-	}
 	else if (p->row + 1 < 9)
 	{
 		p->column = 0;
@@ -35,9 +33,7 @@ struct s_point		*find_next(struct s_point *p)
 struct s_point		*find_previous(struct s_point *p)
 {
 	if (p->column - 1 >= 0)
-	{
 		p->column--;
-	}
 	else if (p->row - 1 >= 0)
 	{
 		p->column = 8;
@@ -59,8 +55,8 @@ int					try(int **board, int row, int column, int attempt)
 
 	box_row = (row / 3) * 3;
 	box_column = (column / 3) * 3;
-	i = 0;
-	while (i < 9)
+	i = -1;
+	while (++i < 9)
 	{
 		if (ABS(board[row][i]) == attempt)
 			return (0);
@@ -68,7 +64,6 @@ int					try(int **board, int row, int column, int attempt)
 			return (0);
 		if (ABS(board[box_row + (i / 3)][box_column + (i % 3)]) == attempt)
 			return (0);
-		i++;
 	}
 	return (1);
 }
@@ -111,9 +106,7 @@ int					solve_puzzle(int **board, struct s_point *sq)
 				return (solve_puzzle(board, sq));
 		}
 		else if (board[sq->row][sq->column] <= 0)
-		{
 			solve_helper(board, sq);
-		}
 	}
 	return (1);
 }
