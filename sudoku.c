@@ -12,49 +12,42 @@
 
 #include "sudoku_info.h"
 
-int					**fillboard(int **board, char **argv)
+int			**fillboard(int **board, char **argv)
 {
 	int i;
 	int j;
 
-	i = 0;
-	while (i < 9)
+	i = -1;
+	while (++i < 9)
 	{
-		j = 0;
-		while (j < 9)
+		j = -1;
+		while (++j < 9)
 		{
 			if (argv[i + 1][j] < 49 || argv[i + 1][j] > 57)
 				board[i][j] = 0;
 			else
-			{
 				board[i][j] = argv[i + 1][j] - 48;
-			}
-			j++;
 		}
-		i++;
 	}
 	return (board);
 }
 
-void				printboard(int **board)
+void			printboard(int **board)
 {
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
-	while (i < 9)
+	i = -1;
+	while (++i < 9)
 	{
-		j = 0;
-		while (j < 9)
+		j = -1;
+		while (++j < 9)
 		{
 			ft_putchar(ABS(board[i][j]) + '0');
 			if (j != 8)
 				ft_putchar(' ');
-			j++;
 		}
 		ft_putchar('\n');
-		i++;
 	}
 }
 
@@ -68,7 +61,7 @@ struct s_point		*point_create(void)
 	return (point);
 }
 
-int					play(int **board, char **argv)
+int			play(int **board, char **argv)
 {
 	struct s_point	*point;
 
@@ -80,22 +73,19 @@ int					play(int **board, char **argv)
 	return (1);
 }
 
-int					main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int				**board;
 	int				i;
 
-	i = 0;
+	i = -1;
 	board = (int **)malloc(sizeof(int *) * 10);
-	while (i < 9)
-	{
+	while (++i < 9)
 		board[i] = (int *)malloc(sizeof(int) * 10);
-		i++;
-	}
 	if (!board)
-		error(board);
+		error("No board provided :(\n");
 	else if (!check_args(argv))
-		error(board);
+		error("Sorry, invalid input\n");
 	else
 	{
 		play(board, argv);
